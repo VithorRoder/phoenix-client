@@ -12,7 +12,11 @@ public class MainPanel extends javax.swing.JPanel {
     public MainPanel(ApiHttpClient http) {
         this.http = http;
         initComponents();
-        jButtonTema.addActionListener(e -> ThemeCycler.toggleTheme());
+        jComboBoxTrocarTema.setSelectedIndex(0);
+        jComboBoxTrocarTema.addActionListener(e -> {
+            int selectedIndex = jComboBoxTrocarTema.getSelectedIndex();
+            ThemeCycler.applyTheme(selectedIndex);
+        });
     }
 
     @SuppressWarnings("unchecked")
@@ -25,7 +29,8 @@ public class MainPanel extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButtonTema = new javax.swing.JButton();
+        jComboBoxTrocarTema = new javax.swing.JComboBox<>(ThemeCycler.getThemeNames());
+        jLabel1 = new javax.swing.JLabel();
         jPanelConteudo = new javax.swing.JPanel();
 
         jPanelHeader.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -50,7 +55,9 @@ public class MainPanel extends javax.swing.JPanel {
 
         jButton5.setText("Sair");
 
-        jButtonTema.setText("Trocar Tema");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Tema:");
 
         javax.swing.GroupLayout jPanelHeaderLayout = new javax.swing.GroupLayout(jPanelHeader);
         jPanelHeader.setLayout(jPanelHeaderLayout);
@@ -66,8 +73,10 @@ public class MainPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonTema, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBoxTrocarTema, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -76,16 +85,17 @@ public class MainPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelHeaderLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonTema, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelHeaderLayout.createSequentialGroup()
                         .addGroup(jPanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                             .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                             .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                             .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(jPanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jComboBoxTrocarTema, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         javax.swing.GroupLayout jPanelConteudoLayout = new javax.swing.GroupLayout(jPanelConteudo);
@@ -127,18 +137,6 @@ public class MainPanel extends javax.swing.JPanel {
         mostrarConteudo(new OrdersPanel(http));
     }//GEN-LAST:event_jButton2MouseClicked
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButtonTema;
-    private javax.swing.JPanel jPanelConteudo;
-    private javax.swing.JPanel jPanelHeader;
-    // End of variables declaration//GEN-END:variables
-
     private void mostrarConteudo(javax.swing.JPanel painel) {
         jPanelConteudo.removeAll();
         jPanelConteudo.setLayout(new java.awt.BorderLayout());
@@ -146,4 +144,17 @@ public class MainPanel extends javax.swing.JPanel {
         jPanelConteudo.revalidate();
         jPanelConteudo.repaint();
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JComboBox jComboBoxTrocarTema;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanelConteudo;
+    private javax.swing.JPanel jPanelHeader;
+    // End of variables declaration//GEN-END:variables
+
 }
