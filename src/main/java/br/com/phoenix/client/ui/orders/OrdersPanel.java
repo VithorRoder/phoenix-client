@@ -2,16 +2,24 @@ package br.com.phoenix.client.ui.orders;
 
 import br.com.phoenix.client.net.ApiHttpClient;
 import br.com.phoenix.client.ui.customers.CustomersDialog;
+import javax.swing.JTable;
 
 public class OrdersPanel extends javax.swing.JPanel {
-    
+
     private final ApiHttpClient http;
-    
+
     public OrdersPanel(ApiHttpClient http) {
         this.http = http;
         initComponents();
         jTable1.setTableHeader(null);
         jTable2.setTableHeader(null);
+        focusLostTables(tabelaOrcPrincipal);
+        focusLostTables(jTable1);
+        focusLostTables(jTable2);
+        focusLostTables(tabelaAcabamentos);
+        focusLostTables(tabelaCalculos);
+        focusLostTables(tabelaCalculosExtras);
+        focusLostTables(tabelaParametros);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -377,7 +385,6 @@ public class OrdersPanel extends javax.swing.JPanel {
 
         jTabbedPane2.addTab("Acabamentos/Montagem", PainelAcabamentoMontagem);
 
-        tabelaCalculos.setForeground(new java.awt.Color(0, 0, 0));
         tabelaCalculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"", null, null, null, null, null, null, null, null},
@@ -1075,12 +1082,23 @@ public class OrdersPanel extends javax.swing.JPanel {
         dialog.setVisible(true);
     }//GEN-LAST:event_comboBoxClientesPopupMenuWillBecomeVisible
 
+    private void focusLostTables(JTable tabela) {
+        tabela.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
+            public void focusLost(java.awt.event.FocusEvent e) {
+                if (tabela.isEditing()) {
+                    tabela.getCellEditor().stopCellEditing();
+                }
+                tabela.clearSelection();
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PainelAcabamentoMontagem;
     private javax.swing.JTextField TextFieldQuantidade;
-    public static javax.swing.JComboBox<String> comboBoxClientes;
-    public javax.swing.JComboBox<String> comboBoxTipoDeOrcamento;
+    private javax.swing.JComboBox<String> comboBoxClientes;
+    private javax.swing.JComboBox<String> comboBoxTipoDeOrcamento;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton3;
@@ -1127,7 +1145,7 @@ public class OrdersPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabelClienteOrcamento3;
-    public javax.swing.JLabel jLabelTipoOrcamento;
+    private javax.swing.JLabel jLabelTipoOrcamento;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
