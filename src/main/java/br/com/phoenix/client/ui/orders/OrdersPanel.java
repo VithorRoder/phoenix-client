@@ -116,7 +116,7 @@ public class OrdersPanel extends javax.swing.JPanel {
         jLabel50 = new javax.swing.JLabel();
         jTextField49 = new javax.swing.JTextField();
         jLabel51 = new javax.swing.JLabel();
-        jTextField50 = new javax.swing.JTextField();
+        jTextFieldEmail = new javax.swing.JTextField();
         jLabel52 = new javax.swing.JLabel();
         jTextField51 = new javax.swing.JTextField();
         jLabel53 = new javax.swing.JLabel();
@@ -1027,7 +1027,7 @@ public class OrdersPanel extends javax.swing.JPanel {
 
         jLabel51.setText(" Celular/Watsapp");
         jPanel11.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 0, 100, 20));
-        jPanel11.add(jTextField50, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 20, 330, 28));
+        jPanel11.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 20, 330, 28));
 
         jLabel52.setText("Email");
         jPanel11.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(952, 0, 70, 20));
@@ -1071,7 +1071,7 @@ public class OrdersPanel extends javax.swing.JPanel {
 
     private void comboBoxClientesPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_comboBoxClientesPopupMenuWillBecomeVisible
         CustomersDialog dialog = new CustomersDialog((java.awt.Window) null, http);
-        dialog.doubleClick(comboBoxClientes, jTextFieldPhone);
+        dialog.doubleClick(comboBoxClientes, jTextFieldPhone, jTextFieldEmail);
         dialog.setVisible(true);
     }//GEN-LAST:event_comboBoxClientesPopupMenuWillBecomeVisible
 
@@ -1168,12 +1168,12 @@ public class OrdersPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField48;
     private javax.swing.JTextField jTextField49;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField50;
     private javax.swing.JTextField jTextField51;
     private javax.swing.JTextField jTextField52;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldPhone;
     private javax.swing.JPanel painelDetalhes01;
     private javax.swing.JPanel painelItemOrcamento;

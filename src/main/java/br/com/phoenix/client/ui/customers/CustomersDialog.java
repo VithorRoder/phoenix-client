@@ -2,7 +2,6 @@ package br.com.phoenix.client.ui.customers;
 
 import br.com.phoenix.client.net.ApiHttpClient;
 import br.com.phoenix.client.service.CustomerService;
-import br.com.phoenix.client.ui.customers.CustomersPanel;
 import java.awt.BorderLayout;
 import java.awt.Window;
 import javax.swing.JComboBox;
@@ -35,7 +34,7 @@ public class CustomersDialog extends JDialog {
         return tabela;
     }
 
-    public void doubleClick(JComboBox<String> comboBox, JTextField textField) {
+    public void doubleClick(JComboBox<String> comboBox, JTextField textFieldPhone, JTextField textFieldEmail) {
         tabela.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -43,13 +42,16 @@ public class CustomersDialog extends JDialog {
                     int row = tabela.getSelectedRow();
 
                     Object valorNome = tabela.getValueAt(row, 1);
+                    Object valorEmail = tabela.getValueAt(row, 2);
                     Object valorPhone = tabela.getValueAt(row, 3);
 
-                    if (valorNome != null && valorPhone != null) {
+                    if (valorNome != null && valorPhone != null && valorEmail != null) {
                         String textoNome = valorNome.toString();
+                        String textoEmail = valorEmail.toString();
                         String textoPhone = valorPhone.toString();
                         comboBox.setSelectedItem(textoNome);
-                        textField.setText(textoPhone);
+                        textFieldEmail.setText(textoEmail);
+                        textFieldPhone.setText(textoPhone);
                         dispose();
                     }
                 }
