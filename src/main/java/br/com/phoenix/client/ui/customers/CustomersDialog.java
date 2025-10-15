@@ -35,6 +35,19 @@ public class CustomersDialog extends JDialog {
     }
 
     public void doubleClick(JComboBox<String> comboBox, JTextField textFieldPhone, JTextField textFieldEmail) {
+
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent e) {
+                comboBox.requestFocusInWindow();
+            }
+
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                comboBox.requestFocusInWindow();
+            }
+        });
+
         tabela.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
