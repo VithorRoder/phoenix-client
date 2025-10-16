@@ -16,7 +16,7 @@ public class QuoteTypeService {
     }
 
     public List<QuoteType> list() throws Exception {
-        String json = http.get("/api/quote/type/");
+        String json = http.get("/api/quote/type");
         return mapper.readValue(json, new TypeReference<List<QuoteType>>() {
         });
     }
@@ -24,7 +24,7 @@ public class QuoteTypeService {
     public QuoteType create(String name) throws Exception {
         var node = mapper.createObjectNode();
         node.put("name", name);
-        String json = http.postJson("/api/quote/type/", mapper.writeValueAsString(node));
+        String json = http.postJson("/api/quote/type", mapper.writeValueAsString(node));
         return mapper.readValue(json, QuoteType.class);
     }
 

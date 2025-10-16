@@ -16,12 +16,12 @@ public class CustomersPanel extends javax.swing.JPanel {
     public CustomersPanel(ApiHttpClient http) {
         this.service = new CustomerService(http);
         initComponents();
-        colunmSize();
         jTableClientes.setDefaultEditor(Object.class, null);
-        refresh();
         btnRefresh.addActionListener(e -> refresh());
         btnSave.addActionListener(e -> onSave());
         btnDelete.addActionListener(e -> onDelete());
+        colunmSize();
+        refresh();
     }
 
     @SuppressWarnings("unchecked")
@@ -115,22 +115,6 @@ public class CustomersPanel extends javax.swing.JPanel {
         add(jPanel1, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnRefresh;
-    private javax.swing.JButton btnSave;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableClientes;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtPhone;
-    // End of variables declaration//GEN-END:variables
-
     private void refresh() {
         try {
             model.setRowCount(0);
@@ -215,5 +199,20 @@ public class CustomersPanel extends javax.swing.JPanel {
         jTableClientes.getColumnModel().getColumn(3).setMaxWidth(400);
         jTableClientes.getColumnModel().getColumn(3).setPreferredWidth(120);
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnRefresh;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableClientes;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPhone;
+    // End of variables declaration//GEN-END:variables
 
 }

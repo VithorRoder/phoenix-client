@@ -3,12 +3,13 @@ package br.com.phoenix.client.ui;
 import br.com.phoenix.client.ui.customers.CustomersPanel;
 import br.com.phoenix.client.ui.orders.OrdersPanel;
 import br.com.phoenix.client.net.ApiHttpClient;
+import br.com.phoenix.client.ui.quote.type.QuoteTypePanel;
 import br.com.phoenix.client.ui.theme.ThemeCycler;
 
 public class MainPanel extends javax.swing.JPanel {
-
+    
     private final ApiHttpClient http;
-
+    
     public MainPanel(ApiHttpClient http) {
         this.http = http;
         initComponents();
@@ -18,7 +19,7 @@ public class MainPanel extends javax.swing.JPanel {
             ThemeCycler.applyTheme(selectedIndex);
         });
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -49,7 +50,12 @@ public class MainPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton4.setText("Fornecedores");
+        jButton4.setText("TO");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         jButton1.setText("OS");
 
@@ -137,6 +143,10 @@ public class MainPanel extends javax.swing.JPanel {
         mostrarConteudo(new OrdersPanel(http));
     }//GEN-LAST:event_jButton2MouseClicked
 
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        mostrarConteudo(new QuoteTypePanel(http));
+    }//GEN-LAST:event_jButton4MouseClicked
+    
     private void mostrarConteudo(javax.swing.JPanel painel) {
         jPanelConteudo.removeAll();
         jPanelConteudo.setLayout(new java.awt.BorderLayout());
